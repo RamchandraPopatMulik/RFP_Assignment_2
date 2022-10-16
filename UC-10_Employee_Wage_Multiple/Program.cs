@@ -4,10 +4,11 @@
     {
         static void Main(string[] args)
         {
-            EmpWageBuilderArray empWageBuilder = new EmpWageBuilderArray();
-            empWageBuilder.addcompanyWage("TCS",20,2,10);
-            empWageBuilder.addcompanyWage("TechMahindra",10,4,20);
-            empWageBuilder.computeEmpWage();
+            EmpWageBuilderArray tcs = new EmpWageBuilderArray("TCS", 20, 20, 100);
+            EmpWageBuilderArray Tech = new EmpWageBuilderArray("TechMahindra", 20, 20, 100);
+            tcs.computeEmpWage();
+            Tech.computeEmpWage();
+           
         }
     }
 }

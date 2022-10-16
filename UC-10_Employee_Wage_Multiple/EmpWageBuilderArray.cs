@@ -10,34 +10,30 @@ namespace UC_10_Employee_Wage_Multiple
     {
         public const int IS_PART_TIME = 1;
         public const int IS_FULL_TIME = 2;
-        private int numOfCompany = 0;
-        public CompanyEmpWage[] companyEmpWageArray;
 
-        public EmpWageBuilderArray()
+        private string company;
+        private int empRatePerHour;
+        private int numOfWorkingDays;
+        private int maxHoursPerMonth;
+        private int totalEmpWage;
+
+        public EmpWageBuilderArray(string company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth)
         {
-            this.companyEmpWageArray = new CompanyEmpWage[5];
-        }
-        public void addcompanyWage(String company,int empRatePerHour,int numOfWorkingDays,int maxHoursPerMonth)
-        {
-            companyEmpWageArray[this.numOfCompany] = new CompanyEmpWage(company,empRatePerHour,numOfWorkingDays,maxHoursPerMonth);
-            numOfCompany++;
+            this.company = company;
+            this.empRatePerHour = empRatePerHour;
+            this.numOfWorkingDays = numOfWorkingDays;
+            this.maxHoursPerMonth = maxHoursPerMonth;
+
         }
         public void computeEmpWage()
-        {
-            for(int i=0;i<numOfCompany;i++)
-            {
-                companyEmpWageArray[i].setTotalEmpWage(this.computeEmpWage(companyEmpWageArray[i]));
-                Console.WriteLine(this.companyEmpWageArray[i].toString());
-            }
-        }
-        private int computeEmpWage(CompanyEmpWage companyEmpWage)
         {
             int empHrs = 0;
             int totalEmpHrs = 0;
             int totalWorkingDays = 0;
-            while (totalEmpHrs <= companyEmpWage.maxHoursPerMonth && totalWorkingDays < companyEmpWage.numOfWorkingDays)
+            int dailyWage = 0;
+            for(int day=0;day<=numOfWorkingDays;day++)
             {
-                totalWorkingDays++;
+               
                 Random random = new Random();
                 int empCheck = random.Next(0, 3);
                 switch (empCheck)
@@ -53,11 +49,13 @@ namespace UC_10_Employee_Wage_Multiple
                         break;
 
                 }
-                totalEmpHrs = totalEmpHrs + empHrs;
-                Console.WriteLine("Day: " + totalWorkingDays + "Emp Hrs : " + empHrs);
+                dailyWage = empHrs*empRatePerHour;
+                Console.WriteLine("DailyWage :"+dailyWage);
 
             }
-            return totalEmpHrs*companyEmpWage.empRatePerHour;
+            totalEmpWage = numOfWorkingDays *dailyWage;
+            Console.WriteLine("Total Employee Wage" +totalEmpWage);
         }
+
     }
 }

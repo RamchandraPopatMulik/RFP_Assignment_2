@@ -53,7 +53,7 @@ namespace UC_10_Employee_Wage_Multiple
                 Console.WriteLine("DailyWage :"+dailyWage);
 
             }
-            totalEmpWage = numOfWorkingDays *dailyWage;
+            totalEmpWage = numOfWorkingDays*dailyWage;
             Console.WriteLine("Total Employee Wage" +totalEmpWage);
         }
 
